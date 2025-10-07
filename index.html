@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Тест</title>
+	<meta charset="utf-8">
+	<style>
+		body {
+			background: #eef2f7;
+			font-family: Arial, sans-serif;
+			padding: 20px;
+		}
+
+		.test-block {
+			background: white;
+			padding: 25px;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			max-width: 520px;
+			margin: 0 auto 20px;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+		}
+
+		h1 {
+			text-align: center;
+			color: #2c3e50;
+			margin-bottom: 30px;
+		}
+
+		/* Контейнер для кнопок ответов — Flexbox */
+		.answers-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin: 15px 0;
+		}
+
+		.answer-btn {
+			flex: 1 1 calc(50% - 5px);
+			height: 50px;
+			background-color: white;
+			border: 2px solid #ccc;
+			cursor: pointer;
+			font-size: 16px;
+			box-sizing: border-box;
+		}
+
+		/* Контейнер для навигационных кнопок */
+		.nav-container {
+			display: flex;
+			gap: 10px;
+			margin-top: 15px;
+		}
+
+		.nav-btn {
+			flex: 1;
+			padding: 10px 0;
+			border: none;
+			border-radius: 5px;
+			color: white;
+			cursor: pointer;
+			font-weight: bold;
+			text-align: center;
+			box-sizing: border-box;
+		}
+
+		.btn-next { background-color: #3498db; }
+		.btn-prev { background-color: #95a5a6; }
+		.btn-finish, .btn-restart { background-color: #2ecc71; }
+
+		.nav-btn:hover {
+			opacity: 0.9;
+		}
+	</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<center>
+	<h1>Тест по теме "Аппаратные технологии"</h1>
+
+	<!-- 1 -->
+	<div id="q1" class="test-block">
+		<h2>Вопрос 1.</h2>
+		<h3>На какой из кнопок есть цифра 4?</h3>
+
+		<div class="answers-container">
+			<button class="answer-btn" onclick="selectAnswer(1, '1', this)">1</button>
+			<button class="answer-btn" onclick="selectAnswer(1, '2', this)">2</button>
+			<button class="answer-btn" onclick="selectAnswer(1, '3', this)">3</button>
+			<button class="answer-btn" onclick="selectAnswer(1, '4', this)">4</button>
+		</div>
+
+		<div class="nav-container">
+			<button class="nav-btn btn-next" onclick="document.getElementById('q1').style.display='none'; document.getElementById('q2').style.display='block';">Далее</button>
+		</div>
+	</div>
+
+	<!-- 2 -->
+	<div id="q2" class="test-block" style="display:none;">
+		<h2>Вопрос 2.</h2>
+		<h3>Какой компонент отвечает за обработку графики?</h3>
+
+		<div class="answers-container">
+			<button class="answer-btn" onclick="selectAnswer(2, 'CPU', this)">CPU</button>
+			<button class="answer-btn" onclick="selectAnswer(2, 'RAM', this)">RAM</button>
+			<button class="answer-btn" onclick="selectAnswer(2, 'GPU', this)">GPU</button>
+			<button class="answer-btn" onclick="selectAnswer(2, 'HDD', this)">HDD</button>
+		</div>
+
+		<div class="nav-container">
+			<button class="nav-btn btn-prev" onclick="document.getElementById('q2').style.display='none'; document.getElementById('q1').style.display='block';">Назад</button>
+			<button class="nav-btn btn-next" onclick="document.getElementById('q2').style.display='none'; document.getElementById('q3').style.display='block';">Далее</button>
+		</div>
+	</div>
+
+	<!-- 3 -->
+	<div id="q3" class="test-block" style="display:none;">
+		<h2>Вопрос 3.</h2>
+		<h3>Что означает аббревиатура SSD?</h3>
+
+		<div class="answers-container">
+			<button class="answer-btn" onclick="selectAnswer(3, 'Solid State Drive', this)">Solid State Drive</button>
+			<button class="answer-btn" onclick="selectAnswer(3, 'Serial Storage Device', this)">Serial Storage Device</button>
+			<button class="answer-btn" onclick="selectAnswer(3, 'System Security Disk', this)">System Security Disk</button>
+			<button class="answer-btn" onclick="selectAnswer(3, 'Super Speed Drive', this)">Super Speed Drive</button>
+		</div>
+
+		<div class="nav-container">
+			<button class="nav-btn btn-prev" onclick="document.getElementById('q3').style.display='none'; document.getElementById('q2').style.display='block';">Назад</button>
+			<button class="nav-btn btn-finish" onclick="proverit()">Завершить</button>
+		</div>
+	</div>
+
+
+	<div id="result" class="test-block" style="display:none;">
+		<h2>Результаты:</h2>
+		<div id="res-text"></div>
+		<br>
+		<div class="nav-container">
+			<button class="nav-btn btn-restart" onclick="location.reload()">Пройти снова</button>
+		</div>
+	</div>
+
+	</center>
+
+	<script>
+
+		var userAnswers = { 1: "", 2: "", 3: "" };
+		var selectedButtons = { 1: null, 2: null, 3: null };
+
+
+		function selectAnswer(questionNum, value, button) {
+			userAnswers[questionNum] = value;
+
+			if (selectedButtons[questionNum]) {
+				selectedButtons[questionNum].style.backgroundColor = "white";
+				selectedButtons[questionNum].style.borderColor = "#ccc";
+			}
+
+
+			button.style.backgroundColor = "#d1ecf1";
+			button.style.borderColor = "#3498db";
+
+			selectedButtons[questionNum] = button;
+		}
+
+		function proverit() {
+			document.getElementById('q3').style.display = 'none';
+
+			let prav = 0;
+			if (userAnswers[1] == "4") prav++;
+			if (userAnswers[2] == "GPU") prav++;
+			if (userAnswers[3] == "Solid State Drive") prav++;
+
+			let txt = "<b>Ваш результат: " + prav + " из 3</b><br><br>";
+
+			txt += "Вопрос 1: ваш ответ — " + (userAnswers[1] || "[ничего не выбрано]") + "<br>";
+			if (userAnswers[1] == "4") {
+				txt += "<span style='color:green;'>Правильно!</span><br><br>";
+			} else {
+				txt += "<span style='color:red;'>Неправильно. Правильный: 4</span><br><br>";
+			}
+
+			txt += "Вопрос 2: ваш ответ — " + (userAnswers[2] || "[ничего не выбрано]") + "<br>";
+			if (userAnswers[2] == "GPU") {
+				txt += "<span style='color:green;'>Правильно!</span><br><br>";
+			} else {
+				txt += "<span style='color:red;'>Неправильно. Правильный: GPU</span><br><br>";
+			}
+
+			txt += "Вопрос 3: ваш ответ — " + (userAnswers[3] || "[ничего не выбрано]") + "<br>";
+			if (userAnswers[3] == "Solid State Drive") {
+				txt += "<span style='color:green;'>Правильно!</span><br><br>";
+			} else {
+				txt += "<span style='color:red;'>Неправильно. Правильный: Solid State Drive</span><br><br>";
+			}
+
+			document.getElementById('res-text').innerHTML = txt;
+			document.getElementById('result').style.display = 'block';
+		}
+	</script>
+
+</body>
+</html>
