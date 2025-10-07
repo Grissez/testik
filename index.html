@@ -13,7 +13,7 @@
 			background: white;
 			padding: 25px;
 			border: 1px solid #ccc;
-			border-radius: 8px;
+			border-radius: 20px;
 			max-width: 520px;
 			margin: 0 auto 20px;
 			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -39,6 +39,7 @@
             text-align: center;
             background-color: white;
             border: 2px solid #ccc;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
             box-sizing: border-box;
@@ -54,7 +55,7 @@
 			flex: 1;
 			padding: 10px 0;
 			border: none;
-			border-radius: 5px;
+			border-radius: 10px;
 			color: white;
 			cursor: pointer;
 			font-weight: bold;
@@ -72,16 +73,27 @@
 </head>
 <body>
 	<center>
-	<h1>Тест по теме "Аппаратные технологии"</h1>
+	
+    <!-- 0 -->
+	<div id="q0" class="test-block">
+        <h2>Тест по теме "Аппаратные технологии"</h2>
+		<h3>Чтобы <b>начать</b> нажмите кнопку <b style="text-decoration-line: underline;">начать</b></h3>
+		<div class="answers-container">
+			<p style="text-align: justify; text-indent: 1em;">Тест по теме «Аппаратные технологии» предназначен для проверки знаний об основных компонентах компьютера, принципах их работы и взаимодействия. Включает вопросы по центральному процессору, оперативной памяти, накопителям, материнской плате, периферийным устройствам и другим аппаратным средствам современных вычислительных систем.</p>
+		</div>
+		<div class="nav-container">
+			<button class="nav-btn btn-next" onclick="document.getElementById('q0').style.display='none'; document.getElementById('q1').style.display='block';">Начать</button>
+		</div>
+	</div>
 	<!-- 1 -->
-	<div id="q1" class="test-block">
+	<div id="q1" class="test-block" style="display:none;">
 		<h2>Вопрос 1.</h2>
 		<h3>Какой компонент компьютера запускается первым при включении питания?</h3>
 		<div class="answers-container">
-			<button class="answer-btn" onclick="selectAnswer(1, '1', this)">Оперативная память</button>
-			<button class="answer-btn" onclick="selectAnswer(1, '2', this)">Центральный процессор</button>
-			<button class="answer-btn" onclick="selectAnswer(1, '3', this)">BIOS/UEFI</button>
-			<button class="answer-btn" onclick="selectAnswer(1, '4', this)">Жёсткий диск</button>
+			<button class="answer-btn" onclick="selectAnswer(1, 'Оперативная память', this)">Оперативная память</button>
+			<button class="answer-btn" onclick="selectAnswer(1, 'Центральный процессор', this)">Центральный процессор</button>
+			<button class="answer-btn" onclick="selectAnswer(1, 'BIOS/UEFI', this)">BIOS/UEFI</button>
+			<button class="answer-btn" onclick="selectAnswer(1, 'Жёсткий диск', this)">Жёсткий диск</button>
 		</div>
 		<div class="nav-container">
 			<button class="nav-btn btn-next" onclick="document.getElementById('q1').style.display='none'; document.getElementById('q2').style.display='block';">Далее</button>
@@ -92,10 +104,10 @@
 		<h2>Вопрос 2.</h2>
 		<h3>Что означает аббревиатура BIOS в контексте аппаратного обеспечения?</h3>
 		<div class="answers-container">
-			<button class="answer-btn" onclick="selectAnswer(2, '1', this)">Basic Input/Output System</button>
-			<button class="answer-btn" onclick="selectAnswer(2, '2', this)">Binary Integrated Operating System</button>
-			<button class="answer-btn" onclick="selectAnswer(2, '3', this)">Boot Initialization Operating Interface</button>
-			<button class="answer-btn" onclick="selectAnswer(2, '4', this)">Basic Integrated Output Service</button>
+			<button class="answer-btn" onclick="selectAnswer(2, 'Basic Input/Output System', this)">Basic Input/Output System</button>
+			<button class="answer-btn" onclick="selectAnswer(2, 'Binary Integrated Operating System', this)">Binary Integrated Operating System</button>
+			<button class="answer-btn" onclick="selectAnswer(2, 'Boot Initialization Operating Interface', this)">Boot Initialization Operating Interface</button>
+			<button class="answer-btn" onclick="selectAnswer(2, 'Basic Integrated Output Service', this)">Basic Integrated Output Service</button>
 		</div>
 		<div class="nav-container">
 			<button class="nav-btn btn-prev" onclick="document.getElementById('q2').style.display='none'; document.getElementById('q1').style.display='block';">Назад</button>
@@ -107,10 +119,10 @@
 		<h2>Вопрос 3.</h2>
 		<h3>Какой интерфейс используется для подключения современных SSD-накопителей напрямую к шине PCIe?</h3>
 		<div class="answers-container">
-			<button class="answer-btn" onclick="selectAnswer(3, '1', this)">SATA</button>
-			<button class="answer-btn" onclick="selectAnswer(3, '2', this)">USB</button>
-			<button class="answer-btn" onclick="selectAnswer(3, '3', this)">NVMe</button>
-			<button class="answer-btn" onclick="selectAnswer(3, '4', this)">IDE</button>
+			<button class="answer-btn" onclick="selectAnswer(3, 'SATA', this)">SATA</button>
+			<button class="answer-btn" onclick="selectAnswer(3, 'USB', this)">USB</button>
+			<button class="answer-btn" onclick="selectAnswer(3, 'NVMe', this)">NVMe</button>
+			<button class="answer-btn" onclick="selectAnswer(3, 'IDE', this)">IDE</button>
 		</div>
 		<div class="nav-container">
 			<button class="nav-btn btn-prev" onclick="document.getElementById('q3').style.display='none'; document.getElementById('q2').style.display='block';">Назад</button>
@@ -122,10 +134,10 @@
 		<h2>Вопрос 4.</h2>
 		<h3>Какой компонент отвечает за преобразование переменного тока (из розетки) в постоянный ток, используемый компонентами компьютера?</h3>
 		<div class="answers-container">
-			<button class="answer-btn" onclick="selectAnswer(4, '1', this)">Материнская плата</button>
-			<button class="answer-btn" onclick="selectAnswer(4, '2', this)">Блок питания</button>
-			<button class="answer-btn" onclick="selectAnswer(4, '3', this)">Процессор</button>
-			<button class="answer-btn" onclick="selectAnswer(4, '4', this)">Видеокарта</button>
+			<button class="answer-btn" onclick="selectAnswer(4, 'Материнская плата', this)">Материнская плата</button>
+			<button class="answer-btn" onclick="selectAnswer(4, 'Блок питания', this)">Блок питания</button>
+			<button class="answer-btn" onclick="selectAnswer(4, 'Процессор', this)">Процессор</button>
+			<button class="answer-btn" onclick="selectAnswer(4, 'Видеокарта', this)">Видеокарта</button>
 		</div>
 		<div class="nav-container">
 			<button class="nav-btn btn-prev" onclick="document.getElementById('q4').style.display='none'; document.getElementById('q3').style.display='block';">Назад</button>
@@ -137,10 +149,10 @@
 		<h2>Вопрос 5.</h2>
 		<h3>Какое из перечисленных утверждений является правильным и существенным отличием SSD от HDD?</h3>
 		<div class="answers-container">
-			<button class="answer-btn" onclick="selectAnswer(5, '1', this)">SSD имеет движущиеся механические части, а HDD нет</button>
-			<button class="answer-btn" onclick="selectAnswer(5, '2', this)">SSD всегда дешевле HDD при одинаковом объёме</button>
-			<button class="answer-btn" onclick="selectAnswer(5, '3', this)">Хранит данные на флеш-памяти без движущихся элементов</button>
-			<button class="answer-btn" onclick="selectAnswer(5, '4', this)">SSD нельзя использовать в качестве системного диска</button>
+			<button class="answer-btn" onclick="selectAnswer(5, 'SSD имеет движущиеся механические части, а HDD нет', this)">SSD имеет движущиеся механические части, а HDD нет</button>
+			<button class="answer-btn" onclick="selectAnswer(5, 'SSD всегда дешевле HDD при одинаковом объёме', this)">SSD всегда дешевле HDD при одинаковом объёме</button>
+			<button class="answer-btn" onclick="selectAnswer(5, 'Хранит данные на флеш-памяти без движущихся элементов', this)">Хранит данные на флеш-памяти без движущихся элементов</button>
+			<button class="answer-btn" onclick="selectAnswer(5, 'SSD нельзя использовать в качестве системного диска', this)">SSD нельзя использовать в качестве системного диска</button>
 		</div>
 		<div class="nav-container">
 			<button class="nav-btn btn-prev" onclick="document.getElementById('q5').style.display='none'; document.getElementById('q4').style.display='block';">Назад</button>
@@ -172,38 +184,38 @@
 		function proverit() {
 			document.getElementById('q5').style.display = 'none';
 			let prav = 0;
-			if (userAnswers[1] == "3") prav++;
-			if (userAnswers[2] == "1") prav++;
-			if (userAnswers[3] == "3") prav++;
-			if (userAnswers[4] == "2") prav++;
-			if (userAnswers[5] == "3") prav++;
+			if (userAnswers[1] == "BIOS/UEFI") prav++;
+			if (userAnswers[2] == "Basic Input/Output System") prav++;
+			if (userAnswers[3] == "NVMe") prav++;
+			if (userAnswers[4] == "Блок питания") prav++;
+			if (userAnswers[5] == "Хранит данные на флеш-памяти без движущихся элементов") prav++;
 			let txt = "<b>Ваш результат: " + prav + " из 5</b><br><br>";
 			txt += "Вопрос 1: ваш ответ — " + (userAnswers[1] || "[ничего не выбрано]") + "<br>";
-			if (userAnswers[1] == "3") {
+			if (userAnswers[1] == "BIOS/UEFI") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: BIOS/UEFI</span><br><br>";
 			}
 			txt += "Вопрос 2: ваш ответ — " + (userAnswers[2] || "[ничего не выбрано]") + "<br>";
-			if (userAnswers[2] == "1") {
+			if (userAnswers[2] == "Basic Input/Output System") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: Basic Input/Output System</span><br><br>";
 			}
 			txt += "Вопрос 3: ваш ответ — " + (userAnswers[3] || "[ничего не выбрано]") + "<br>";
-			if (userAnswers[3] == "3") {
+			if (userAnswers[3] == "NVMe") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: NVMe</span><br><br>";
 			}
 			txt += "Вопрос 4: ваш ответ — " + (userAnswers[4] || "[ничего не выбрано]") + "<br>";
-			if (userAnswers[4] == "2") {
+			if (userAnswers[4] == "Блок питания") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: Блок питания</span><br><br>";
 			}
 			txt += "Вопрос 5: ваш ответ — " + (userAnswers[5] || "[ничего не выбрано]") + "<br>";
-			if (userAnswers[5] == "3") {
+			if (userAnswers[5] == "Хранит данные на флеш-памяти без движущихся элементов") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: Хранит данные на флеш-памяти без движущихся элементов</span><br><br>";
