@@ -30,15 +30,20 @@
 			gap: 10px;
 			margin: 15px 0;
 		}
-		.answer-btn {
-			flex: 1 1 calc(50% - 5px);
-			height: 70px;
-			background-color: white;
-			border: 2px solid #ccc;
-			cursor: pointer;
-			font-size: 16px;
-			box-sizing: border-box;
-		}
+        .answer-btn {
+            flex: 1 1 calc(50% - 5px);
+            min-height: 70px; /* минимальная высота */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: white;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            font-size: 16px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
 		/* Контейнер для навигационных кнопок */
 		.nav-container {
 			display: flex;
@@ -132,10 +137,10 @@
 		<h2>Вопрос 5.</h2>
 		<h3>Какое из перечисленных утверждений является правильным и существенным отличием SSD от HDD?</h3>
 		<div class="answers-container">
-			<button class="answer-btn" style="height: fit-content;" onclick="selectAnswer(5, '1', this)">SSD имеет движущиеся механические части, а HDD нет</button>
-			<button class="answer-btn" style="height: fit-content;" onclick="selectAnswer(5, '2', this)">SSD всегда дешевле HDD при одинаковом объёме</button>
-			<button class="answer-btn" style="height: fit-content;" onclick="selectAnswer(5, '3', this)">Хранит данные на флеш-памяти без движущихся элементов</button>
-			<button class="answer-btn" style="height: fit-content;" onclick="selectAnswer(5, '4', this)">SSD нельзя использовать в качестве системного диска</button>
+			<button class="answer-btn" onclick="selectAnswer(5, '1', this)">SSD имеет движущиеся механические части, а HDD нет</button>
+			<button class="answer-btn" onclick="selectAnswer(5, '2', this)">SSD всегда дешевле HDD при одинаковом объёме</button>
+			<button class="answer-btn" onclick="selectAnswer(5, '3', this)">Хранит данные на флеш-памяти без движущихся элементов</button>
+			<button class="answer-btn" onclick="selectAnswer(5, '4', this)">SSD нельзя использовать в качестве системного диска</button>
 		</div>
 		<div class="nav-container">
 			<button class="nav-btn btn-prev" onclick="document.getElementById('q5').style.display='none'; document.getElementById('q4').style.display='block';">Назад</button>
