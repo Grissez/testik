@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Тест</title>
+	<title>Testik</title>
 	<meta charset="utf-8">
 	<style>
 		body {
-			background: #eef2f7;
-			font-family: Arial, sans-serif;
-			padding: 20px;
+		    background: #eef2f7;
+		    font-family: Arial, sans-serif;
+		    padding: 20px;
 		}
+		/* Окно работы */
 		.test-block {
 			background: white;
 			padding: 25px;
@@ -23,16 +24,17 @@
 			color: #2c3e50;
 			margin-bottom: 30px;
 		}
-		/* Контейнер для кнопок ответов — Flexbox */
+		/* Контейнер для кнопок ответов */
 		.answers-container {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 10px;
 			margin: 15px 0;
 		}
+		/* Кнопки ответов */
         .answer-btn {
             flex: 1 1 calc(50% - 5px);
-            min-height: 70px; /* минимальная высота */
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -45,12 +47,13 @@
             box-sizing: border-box;
             padding: 10px;
         }
-		/* Контейнер для навигационных кнопок */
+		/* Контейнер для кнопок навигации */
 		.nav-container {
 			display: flex;
 			gap: 10px;
 			margin-top: 15px;
 		}
+		/* Кнопки навигации */
 		.nav-btn {
 			flex: 1;
 			padding: 10px 0;
@@ -74,7 +77,7 @@
 <body>
 	<center>
 	
-    <!-- 0 -->
+    <!-- Приветствие -->
 	<div id="q0" class="test-block">
         <h2>Тест по теме «Аппаратные технологии»</h2>
 		<h3>Чтобы <b>начать</b> нажмите кнопку <b style="text-decoration-line: underline;">начать</b></h3>
@@ -85,7 +88,7 @@
 			<button class="nav-btn btn-next" onclick="document.getElementById('q0').style.display='none'; document.getElementById('q1').style.display='block';">Начать</button>
 		</div>
 	</div>
-	<!-- 1 -->
+	<!-- Вопрос 1 -->
 	<div id="q1" class="test-block" style="display:none;">
 		<h2>Вопрос 1.</h2>
 		<h3>Какой компонент компьютера запускается первым при включении питания?</h3>
@@ -99,7 +102,7 @@
 			<button class="nav-btn btn-next" onclick="document.getElementById('q1').style.display='none'; document.getElementById('q2').style.display='block';">Далее</button>
 		</div>
 	</div>
-	<!-- 2 -->
+	<!-- Вопрос 2 -->
 	<div id="q2" class="test-block" style="display:none;">
 		<h2>Вопрос 2.</h2>
 		<h3>Что означает аббревиатура BIOS в контексте аппаратного обеспечения?</h3>
@@ -114,7 +117,7 @@
 			<button class="nav-btn btn-next" onclick="document.getElementById('q2').style.display='none'; document.getElementById('q3').style.display='block';">Далее</button>
 		</div>
 	</div>
-	<!-- 3 -->
+	<!-- Вопрос 3 -->
 	<div id="q3" class="test-block" style="display:none;">
 		<h2>Вопрос 3.</h2>
 		<h3>Какой интерфейс используется для подключения современных SSD-накопителей напрямую к шине PCIe?</h3>
@@ -129,7 +132,7 @@
 			<button class="nav-btn btn-next" onclick="document.getElementById('q3').style.display='none'; document.getElementById('q4').style.display='block';">Далее</button>
 		</div>
 	</div>
-	<!-- 4 -->
+	<!-- Вопрос 4 -->
 	<div id="q4" class="test-block" style="display:none;">
 		<h2>Вопрос 4.</h2>
 		<h3>Какой компонент отвечает за преобразование переменного тока (из розетки) в постоянный ток, используемый компонентами компьютера?</h3>
@@ -144,7 +147,7 @@
 			<button class="nav-btn btn-next" onclick="document.getElementById('q4').style.display='none'; document.getElementById('q5').style.display='block';">Далее</button>
 		</div>
 	</div>
-	<!-- 5 -->
+	<!-- Вопрос 5 -->
 	<div id="q5" class="test-block" style="display:none;">
 		<h2>Вопрос 5.</h2>
 		<h3>Какое из перечисленных утверждений является правильным и существенным отличием SSD от HDD?</h3>
@@ -168,10 +171,10 @@
 		</div>
 	</div>
 	</center>
-	<script>
+	<script> // !под снос!, очень не эффективно и затратно, но пока работает 
 		var userAnswers = { 1: "", 2: "", 3: "", 4: "", 5: "" };
 		var selectedButtons = { 1: null, 2: null, 3: null, 4: null, 5: null };
-		function selectAnswer(questionNum, value, button) {
+		function selectAnswer(questionNum, value, button) { // Передача ответа с кнопки в переменную (номер вопроса, ответ, ссылка на кнопку)
 			userAnswers[questionNum] = value;
 			if (selectedButtons[questionNum]) {
 				selectedButtons[questionNum].style.backgroundColor = "white";
@@ -183,43 +186,52 @@
 		}
 		function proverit() {
 			document.getElementById('q5').style.display = 'none';
-			let prav = 0;
-			if (userAnswers[1] == "BIOS/UEFI") prav++;
+			// счёт и оценка правильности ответов
+			let prav = 0; 
+			
+			if (userAnswers[1] == "BIOS/UEFI") prav++; 
 			if (userAnswers[2] == "Basic Input/Output System") prav++;
 			if (userAnswers[3] == "NVMe") prav++;
 			if (userAnswers[4] == "Блок питания") prav++;
 			if (userAnswers[5] == "Хранит данные на флеш-памяти без движущихся элементов") prav++;
+			
 			let txt = "<b>Ваш результат: " + prav + " из 5</b><br><br>";
+			
 			txt += "Вопрос 1: ваш ответ — " + (userAnswers[1] || "[ничего не выбрано]") + "<br>";
 			if (userAnswers[1] == "BIOS/UEFI") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: BIOS/UEFI</span><br><br>";
 			}
+			
 			txt += "Вопрос 2: ваш ответ — " + (userAnswers[2] || "[ничего не выбрано]") + "<br>";
 			if (userAnswers[2] == "Basic Input/Output System") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: Basic Input/Output System</span><br><br>";
 			}
+			
 			txt += "Вопрос 3: ваш ответ — " + (userAnswers[3] || "[ничего не выбрано]") + "<br>";
 			if (userAnswers[3] == "NVMe") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: NVMe</span><br><br>";
 			}
+			
 			txt += "Вопрос 4: ваш ответ — " + (userAnswers[4] || "[ничего не выбрано]") + "<br>";
 			if (userAnswers[4] == "Блок питания") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: Блок питания</span><br><br>";
 			}
+			
 			txt += "Вопрос 5: ваш ответ — " + (userAnswers[5] || "[ничего не выбрано]") + "<br>";
 			if (userAnswers[5] == "Хранит данные на флеш-памяти без движущихся элементов") {
 				txt += "<span style='color:green;'>Правильно!</span><br><br>";
 			} else {
 				txt += "<span style='color:red;'>Неправильно. Правильный: Хранит данные на флеш-памяти без движущихся элементов</span><br><br>";
 			}
+			// вывод
 			document.getElementById('res-text').innerHTML = txt;
 			document.getElementById('result').style.display = 'block';
 		}
